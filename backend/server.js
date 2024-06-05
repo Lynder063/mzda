@@ -45,7 +45,7 @@ app.post("/api/shifts", async (req, res) => {
   try {
     const newShift = await pool.query(
       "INSERT INTO shifts (date, start_time, end_time) VALUES ($1, $2, $3) RETURNING *",
-      [timeWorked, date, startTime, endTime]
+      [date, startTime, endTime]
     );
     res.json(newShift.rows[0]);
   } catch (err) {
