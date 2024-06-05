@@ -41,7 +41,7 @@ app.get("/api/shifts/:id", async (req, res) => {
 
 // Endpoint pro vytvoření nové směny
 app.post("/api/shifts", async (req, res) => {
-  const { timeWorked, date, startTime, endTime } = req.body;
+  const { date, startTime, endTime } = req.body;
   try {
     const newShift = await pool.query(
       "INSERT INTO shifts (date, start_time, end_time) VALUES ($1, $2, $3) RETURNING *",
